@@ -1,0 +1,147 @@
+Copy of output produced by running tests provided:
+
+
+Replacer: Clock
+
+
+
+Any resemblance of persons in this database to people living or
+dead is purely coincidental. The contents of this database do not
+reflect the views of York University, the Computer Science &
+Engineering Department, or the developers...:-)
+
+**********************Query1 starting *********************
+Query: Find the names of sailors who have reserved boat number 1.
+       and print out the date of reservation.
+
+  SELECT S.sname, R.date
+  FROM   Sailors S, Reserves R
+  WHERE  S.sid = R.sid AND R.bid = 1
+
+
+(Tests FileScan, Projection, and Sort-Merge Join)
+[Jarek Gryz, 05/10/95]
+[Jarek Gryz, 05/10/95]
+[David Dewitt, 05/11/95]
+[David Dewitt, 05/11/95]
+[Parke Godfrey, 05/12/95]
+[Parke Godfrey, 05/12/95]
+
+Query1 completed successfully!
+*******************Query1 finished!!!*****************
+
+
+
+**********************Query2 starting *********************
+Query: Show sailors and boats by name such that the boat is
+       the sailors' favorite color.
+
+  SELECT S.sname, B.bname
+  FROM   Sailors S, Boats R
+  WHERE  S.fav_color = B.color and S.sid <= 35
+
+(Tests SortMerge Join on a many-many join.)
+
+[David Dewitt, Enterprise]
+[Parke Godfrey, Voyager]
+[Jarek Gryz, Buckey]
+[Jarek Gryz, Wisconsin]
+[Aijun An, Buckey]
+[Aijun An, Wisconsin]
+[Tom Reps, Onion]
+
+Query2 completed successfully!
+*******************Query2 finished!!!*****************
+
+
+
+**********************Query3 starting *********************
+Query: Find the names of sailors who have reserved a boat.
+
+  SELECT S.sname
+  FROM   Sailors S, Reserves R
+  WHERE  S.sid = R.sid
+
+(Tests FileScan, Projection, and SortMerge Join.)
+
+[Jarek Gryz]
+[Jarek Gryz]
+[Jarek Gryz]
+[Jarek Gryz]
+[Jarek Gryz]
+[Jarek Gryz]
+[David Dewitt]
+[David Dewitt]
+[David Dewitt]
+[David Dewitt]
+[Parke Godfrey]
+[Parke Godfrey]
+[Aijun An]
+[Aijun An]
+[Yannis Ioannidis]
+[Yannis Ioannidis]
+[Raghu Ramakrishnan]
+[Raghu Ramakrishnan]
+[Raghu Ramakrishnan]
+[Raghu Ramakrishnan]
+
+Query3 completed successfully!
+*******************Query3 finished!!!*****************
+
+
+
+**********************Query4 starting *********************
+Query: Find the names of sailors who have reserved a boat
+       and print each name once.
+
+  SELECT DISTINCT S.sname
+  FROM   Sailors S, Reserves R
+  WHERE  S.sid = R.sid
+
+(Tests FileScan, Projection, Sort-Merge Join and Duplication elimination.)
+
+[Aijun An]
+[David Dewitt]
+[Jarek Gryz]
+[Parke Godfrey]
+[Raghu Ramakrishnan]
+[Yannis Ioannidis]
+
+Query4 completed successfully!
+*******************Query4 finished!!!*****************
+
+
+
+**********************Query5 starting *********************
+Query: Find the names of old sailors or sailors with a rating less
+       than 7, who have reserved a boat, (perhaps to increase the
+       amount they have to pay to make a reservation).
+
+  SELECT S.sname, S.rating, S.age
+  FROM   Sailors S, Reserves R
+  WHERE  S.sid = R.sid and (S.age > 40 || S.rating < 7)
+
+(Tests FileScan, Multiple Selection, Projection, and Sort-Merge Join.)
+
+[Jarek Gryz, 9, 40.3]
+[Jarek Gryz, 9, 40.3]
+[Jarek Gryz, 9, 40.3]
+[Jarek Gryz, 9, 40.3]
+[Jarek Gryz, 9, 40.3]
+[Jarek Gryz, 9, 40.3]
+[David Dewitt, 10, 53.2]
+[David Dewitt, 10, 53.2]
+[David Dewitt, 10, 53.2]
+[David Dewitt, 10, 53.2]
+[Parke Godfrey, 5, 32.3]
+[Parke Godfrey, 5, 32.3]
+[Yannis Ioannidis, 8, 46.2]
+[Yannis Ioannidis, 8, 46.2]
+
+Query5 completed successfully!
+*******************Query5 finished!!!*****************
+
+
+
+Finished joins testing
+join tests completed successfully
